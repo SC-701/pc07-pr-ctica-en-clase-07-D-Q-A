@@ -1,0 +1,30 @@
+﻿@page
+@model Producto.Web.Pages.Productos.DetalleModelo
+@{
+}
+
+<h1>Detalles de Producto</h1>
+<div class="container">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">@Html.DisplayFor(modelo => modelo.producto.SubCategoria) @Html.DisplayFor(modelo => modelo.producto.Categoria)</h5>
+                <div>
+                    <b>@Html.DisplayFor(modelo => modelo.producto.Nombre)</b>
+                </div>
+                <div>
+                    <b>@Html.DisplayFor(modelo => modelo.producto.Descripcion)</b>
+                </div>
+                <div>
+                    <b>₡@Html.DisplayFor(modelo => modelo.producto.Precio)</b>
+                </div>
+                <p class="card-text"><small class="text-muted">Stock: @Html.DisplayFor(modelo => modelo.producto.Stock) | Codigo Barras: @Html.DisplayFor(modelo => modelo.producto.CodigoBarras)</small>
+            </div>
+            
+        </div>
+        <br />
+        <a type="button" class="btn btn-primary" asp-page="./Index">Regresar</a>
+        <a type="button" class="btn btn-warning" asp-page="./Editar" asp-route-id="@Model.producto.Id">Editar</a>
+
+    </div>
+</div>

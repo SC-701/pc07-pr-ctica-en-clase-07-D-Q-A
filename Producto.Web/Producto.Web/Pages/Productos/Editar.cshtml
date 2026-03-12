@@ -1,0 +1,97 @@
+﻿@page
+@model Producto.Web.Pages.Productos.EditarModelo
+@{
+}
+<h1>Editar Producto</h1>
+<div class="container">
+    <div class="col-xl-8 col-lg-6 col-md-8 col-sm-10 mx-auto">
+<form method="post">
+            <div class="form-group">
+                <label for="categorias">Categorias</label>
+                <Select asp-for="categoriaseleccionada" class="form-select" asp-items="Model.categorias" id="categorias" onchange="fetchSubCategorias()">
+                    <option value="">
+                        Seleccione una categoria
+                    </option>
+                </Select>
+            </div>
+            <div class="form-group">
+                <label for="subcategorias">Subcaterogias</label>
+                <Select asp-for="subcategoriaseleccionada" class="form-select" asp-items="Model.subcategorias" id="subcategorias">
+                    <option value="">
+                        Seleccione un subcategoria
+                    </option>
+                </Select>
+            </div>
+    <div class="form-group">
+                <label asp-for="productoResponse.Nombre" class="control-label"></label>
+                <input class="form-control" asp-for="productoResponse.Nombre" />
+                <span class="text-danger" asp-validation-for="productoResponse.Nombre"></span>
+    </div>
+
+    <div class="form-group">
+                <label asp-for="productoResponse.Descripcion" class="control-label"></label>
+                <input class="form-control" asp-for="productoResponse.Descripcion" />
+                <span class="text-danger" asp-validation-for="productoResponse.Descripcion"></span>
+    </div>
+
+    <div class="form-group">
+                <label asp-for="productoResponse.Precio" class="control-label"></label>
+                <input class="form-control" asp-for="productoResponse.Precio" />
+                <span class="text-danger" asp-validation-for="productoResponse.Precio"></span>
+    </div>
+
+    <div class="form-group">
+                <label asp-for="productoResponse.Stock" class="control-label"></label>
+                <input class="form-control" asp-for="productoResponse.Stock" />
+                <span class="text-danger" asp-validation-for="productoResponse.Stock"></span>
+    </div>
+
+    <div class="form-group">
+                <label asp-for="productoResponse.CodigoBarras" class="control-label"></label>
+                <input class="form-control" asp-for="productoResponse.CodigoBarras" />
+                <span class="text-danger" asp-validation-for="productoResponse.CodigoBarras"></span>
+    </div>
+
+    <div class=" text-danger" asp-validation-summary="All"></div>
+    <div class="form-group">
+        <a class=" btn btn-primary " asp-page="./Index">Regresar</a>
+        <input class="btn btn-warning" type="submit" value="Editar" />
+    </div>
+
+    <input type="hidden" asp-for="productoResponse.Id">
+    <input type="hidden" asp-for="categoriaseleccionada">
+    <input type="hidden" asp-for="subcategoriaseleccionada">
+    <input type="hidden" asp-for="categorias">
+</form>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        async function fetchSubCategorias() {
+            const categoriaId = document.getElementById("categorias").value;
+            if (!categoriaId) { return; }
+            try {
+                const respuesta = await fetch(`?handler=ObtenerSubCategorias&categoriaId=${categoriaId}`);
+                const subcategorias = await respuesta.json();
+                const subcategoriasSelect = document.getElementById("subcategorias");
+                subcategoriasSelect.innerHTML = '<option value="">Seleccione un subcategoria</option>'
+                subcategorias.forEach(
+                    subcategoria => {
+                        const option = document.createElement("option");
+                        option.value = subcategoria.id;
+                        option.text = subcategoria.nombre;
+                        subcategoriasSelect.appendChild(option);
+                    }
+                )
+            }
+            catch(error){
+                console.error('Error obteniendo los datos', error);
+            }
+        }
+
+    </script>
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

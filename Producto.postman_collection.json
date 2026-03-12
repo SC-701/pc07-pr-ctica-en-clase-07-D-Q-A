@@ -1,0 +1,154 @@
+{
+  "info": {
+    "_postman_id": "c5dcb584-c35f-48c9-9e75-3d5c6bb0a5cf",
+    "name": "Producto",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "43997408",
+    "_collection_link": "https://go.postman.co/collection/43997408-c5dcb584-c35f-48c9-9e75-3d5c6bb0a5cf?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "ObtenerProductos",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://localhost:7190/api/Producto",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7190",
+          "path": [
+            "api",
+            "Producto"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "ObtenerProducto",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://localhost:7190/api/Producto?id=940e97b6-475c-4c17-90c1-9ec153c6ef2c",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7190",
+          "path": [
+            "api",
+            "Producto"
+          ],
+          "query": [
+            {
+              "key": "id",
+              "value": "940e97b6-475c-4c17-90c1-9ec153c6ef2c"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "CrearProducto",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nombre\": \"Alitas\",\r\n  \"descripcion\": \"1KG de Alitas de Pollo\",\r\n  \"precio\": 4500,\r\n  \"stock\": 20,\r\n  \"codigoBarras\": \"1010111\",\r\n  \"idSubCategoria\": \"65B2E6B2-7680-485E-A4BC-FCDE66905142\"\r\n    }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://localhost:7190/api/Producto",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7190",
+          "path": [
+            "api",
+            "Producto"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "EliminarProducto",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n        \"id\": \"e0644382-2a6b-49e4-8e7c-b878746591db\",\r\n        \"subCategoria\": \"65B2E6B2-7680-485E-A4BC-FCDE66905142\",\r\n        \"categoria\": \"7BF1A80A-D5CB-45AC-802A-CB4D795EDBC3\",\r\n        \"nombre\": \"Alitas\",\r\n        \"descripcion\": \"Alitas de Pollo\",\r\n        \"precio\": 1000.00,\r\n        \"stock\": 20,\r\n        \"codigoBarras\": \"11110000\"\r\n    }"
+        },
+        "url": {
+          "raw": "https://localhost:7190/api/Producto?id=940e97b6-475c-4c17-90c1-9ec153c6ef2c",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7190",
+          "path": [
+            "api",
+            "Producto"
+          ],
+          "query": [
+            {
+              "key": "id",
+              "value": "940e97b6-475c-4c17-90c1-9ec153c6ef2c"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "EditarProducto",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nombre\": \"Muslos\",\r\n  \"descripcion\": \"Muslos Pollo\",\r\n  \"precio\": 2000,\r\n  \"stock\": 20,\r\n  \"codigoBarras\": \"10101\",\r\n  \"idSubCategoria\": \"65B2E6B2-7680-485E-A4BC-FCDE66905142\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://localhost:7190/api/Producto?id=75743157-8255-4c01-b367-7c3261003bf6",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7190",
+          "path": [
+            "api",
+            "Producto"
+          ],
+          "query": [
+            {
+              "key": "id",
+              "value": "75743157-8255-4c01-b367-7c3261003bf6"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

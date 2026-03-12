@@ -1,0 +1,29 @@
+﻿@page
+@model Producto.Web.Pages.Productos.IndexModel
+@{
+}
+<h1 class="text-lg-center">Listado de Productos</h1>
+<div class="container">
+    <div class="text-center mb-4">
+    <a type="button" class="btn btn-primary" asp-page="./Agregar" >Agrega tu Producto</a>
+    </div>
+    <div class="row">
+        @if (Model.productos != null)
+            foreach (var productos in Model.productos)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">@Html.DisplayFor(subcategoria => productos.Nombre)</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">@Html.DisplayFor(subcategoria => productos.Descripcion)</h6>
+                            <p class="card-text">₡@Html.DisplayFor(subcategoria => productos.Precio)</p>
+                            <a type="button" class="btn btn-primary" asp-page="./Detalle" asp-route-id="@productos.Id">Detalles</a>
+                            <a type="button" class="btn btn-warning" asp-page="./Editar" asp-route-id="@productos.Id">Editar</a>
+                            <a type="button" class="btn btn-danger" asp-page="./Eliminar" asp-route-id="@productos.Id">Eliminar</a>
+                        </div>
+                    </div>
+                </div>
+            }
+
+    </div>
+</div>
